@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Jurerê 26/27 🇧🇷</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 0;
+            font-family: 'Poppins', sans-serif;
+            /* Fondo animado tropical de Brasil */
+            background: linear-gradient(45deg, #009c3b, #ffdf00, #002776);
+            background-size: 300% 300%;
+            animation: gradientBG 12s ease infinite;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-panel {
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 25px;
+            width: 85%;
+            max-width: 400px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 0 0 5px 0;
+            text-align: center;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: -1px;
+        }
+
+        h2 {
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 400;
+            margin: 0 0 25px 0;
+            color: #eee;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .time-box {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 5px;
+            border-radius: 14px;
+            width: 23%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .time-box .number {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .time-box .label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ccc;
+        }
+
+        /* Nivel de Manija (Rueda) */
+        .manija-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .manija-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .circular-progress {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(#4caf50 0%, rgba(255,255,255,0.1) 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(0,0,0,0.3);
+            transition: background 1s ease;
+        }
+        .circular-progress::before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: #1a1a1a; /* Centro oscuro para contraste */
+            z-index: 1;
+        }
+        .progress-value {
+            position: relative;
+            z-index: 2;
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .checklist li {
+            display: flex;
+            align-items: center;
+            padding: 14px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        .checklist input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(255,255,255,0.6);
+            border-radius: 8px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+        .checklist input[type="checkbox"]:checked {
+            background-color: #4caf50;
+            border-color: #4caf50;
+        }
+        .checklist input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .checklist span {
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+        .checklist input[type="checkbox"]:checked + span {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-panel">
+        <h1>Jurerê 26/27 🏖️🍹</h1>
+        <h2>Tandil ✈️ Brasil • Año Nuevo</h2>
+        
+        <div class="countdown">
+            <div class="time-box"><span class="number" id="days">00</span><span class="label">Días</span></div>
+            <div class="time-box"><span class="number" id="hours">00</span><span class="label">Hrs</span></div>
+            <div class="time-box"><span class="number" id="minutes">00</span><span class="label">Min</span></div>
+            <div class="time-box"><span class="number" id="seconds">00</span><span class="label">Seg</span></div>
+        </div>
+    </div>
+
+    <div class="glass-panel manija-container">
+        <div class="manija-title">Nivel de Manija 🚀</div>
+        <div class="circular-progress" id="progress-wheel">
+            <div class="progress-value" id="progress-text">0%</div>
+        </div>
+    </div>
+
+    <div class="glass-panel">
+        <div class="manija-title" style="margin-bottom:10px; font-size: 1.1rem;">Kit de Supervivencia 🎒</div>
+        <ul class="checklist" id="checklist">
+            <!-- Los ítems se cargan acá con JavaScript -->
+        </ul>
+    </div>
+
+    <script>
+        // --- 1. LÓGICA DE LA CUENTA REGRESIVA ---
+        const targetDate = new Date("2026-12-26T00:00:00").getTime();
+        
+        // --- 2. LÓGICA DE LA RUEDA DE MANIJA ---
+        // Se calcula desde hoy (fecha en la que armaron la app) hasta el viaje
+        const startDate = new Date("2026-10-16T00:00:00").getTime();
+        
+        function updateApp() {
+            const now = new Date().getTime();
+            
+            // Reloj
+            const distance = targetDate - now;
+            if (distance < 0) {
+                document.querySelector('.countdown').innerHTML = "<h2 style='width:100%; text-align:center; font-size:1.5rem; margin:0;'>¡LLEGÓ EL DÍA! ✈️🇧🇷</h2>";
+            } else {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+            }
+
+            // Rueda de Manija
+            let totalDuration = targetDate - startDate;
+            let timePassed = now - startDate;
+            let percentage = (timePassed / totalDuration) * 100;
+            
+            // Límites para que no rompa el diseño
+            if(percentage < 0) percentage = 0;
+            if(percentage > 100) percentage = 100;
+            
+            const progressWheel = document.getElementById("progress-wheel");
+            const progressText = document.getElementById("progress-text");
+            
+            let roundedPercent = Math.floor(percentage);
+            progressText.innerText = roundedPercent + "%";
+            
+            // Cambio dinámico de color de Verde -> Amarillo -> Rojo
+            let color = "#4caf50"; // Verde (Tranqui)
+            if(percentage > 40 && percentage <= 75) {
+                color = "#ffeb3b"; // Amarillo (Empezando a picar)
+            } else if(percentage > 75) {
+                color = "#ff5722"; // Rojo/Naranja (Manija total)
+            }
+
+            progressWheel.style.background = `conic-gradient(${color} ${percentage}%, rgba(255,255,255,0.05) ${percentage}%)`;
+        }
+
+        setInterval(updateApp, 1000);
+        updateApp();
+
+        // --- 3. LÓGICA DE LA CHECKLIST (Con memoria en el celular) ---
+        const items = [
+            { id: "item-dni", text: "Pasaporte / DNI al día 🛂" },
+            { id: "item-pasajes", text: "Pasajes (¡acordate de cargar las millas en LATAM!) ✈️" },
+            { id: "item-hospedaje", text: "Reserva de Hospedaje 🏠" },
+            { id: "item-p12", text: "Entradas P12 Ano Novo 🎟️" },
+            { id: "item-ropa", text: "Remeras oversize y zapatillas Adidas 👕👟" },
+            { id: "item-gafas", text: "Gafas de sol 😎" },
+            { id: "item-protector", text: "Protector solar y botiquín (Farmacity) 🧴" },
+            { id: "item-parlante", text: "Parlante Bluetooth 🔊" },
+            { id: "item-caipi", text: "Ganas de tomar Caipirinha 🍹" }
+        ];
+
+        const checklistContainer = document.getElementById('checklist');
+
+        items.forEach(item => {
+            const li = document.createElement('li');
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = item.id;
+            
+            // Cargar si ya lo habían tachado antes
+            const savedState = localStorage.getItem(item.id);
+            if(savedState === 'true') checkbox.checked = true;
+
+            // Guardar al tocar la casilla
+            checkbox.addEventListener('change', (e) => {
+                localStorage.setItem(item.id, e.target.checked);
+            });
+
+            const label = document.createElement('span');
+            label.innerText = item.text;
+            
+            li.appendChild(checkbox);
+            li.appendChild(label);
+            
+            // Para que se pueda tachar tocando el texto y no solo el cuadradito
+            li.addEventListener('click', (e) => {
+                if(e.target !== checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    localStorage.setItem(item.id, checkbox.checked);
+                }
+            });
+
+            checklistContainer.appendChild(li);
+        });
+    </script>
+</body>
+</html>
